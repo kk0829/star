@@ -31,9 +31,8 @@ public class AccountController extends BaseController {
     }
 
     @GetMapping(value = "/account/search")
-    public PlainResult search() {
+    public PlainResult search() throws Exception {
         Page<Account> page = accountService.search(0, 20);
-
         return this.success(page);
     }
 }
