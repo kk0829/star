@@ -19,6 +19,6 @@ public class CountryCodeController extends BaseController {
     @GetMapping("/common/country-code/list")
     public PlainResult findAll() {
         List<CountryCode> data = countryCodeService.findAll();
-        return this.g(data);
+        return this.success(data);
     }
 }
