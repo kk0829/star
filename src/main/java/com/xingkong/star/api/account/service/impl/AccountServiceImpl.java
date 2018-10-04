@@ -4,6 +4,10 @@ import com.xingkong.star.api.account.domain.Account;
 import com.xingkong.star.api.account.repository.AccountRepository;
 import com.xingkong.star.api.account.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -28,5 +32,11 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Long count() {
         return repository.count();
+    }
+
+    @Override
+    public Page<Account> search(Integer page, Integer size) {
+        Pageable pageable = PageRequest.of(page, size, Sort.Direction.ASC, "id");
+        return repository.findAll(pageable);
     }
 }
