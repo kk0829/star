@@ -1,4 +1,4 @@
-package com.xingkong.star.domain;
+package com.xingkong.star.api.country_code.domain;
 
 import lombok.Data;
 

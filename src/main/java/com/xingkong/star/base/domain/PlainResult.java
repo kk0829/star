@@ -1,4 +1,4 @@
-package com.xingkong.star.domain;
+package com.xingkong.star.base.domain;
 
 public class PlainResult<T> {
     private Integer code;
