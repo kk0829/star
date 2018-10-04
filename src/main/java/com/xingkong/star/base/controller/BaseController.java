@@ -5,11 +5,11 @@ import com.xingkong.star.base.domain.PlainResult;
 public class BaseController {
 
     public PlainResult success() {
-        return new PlainResult(0, "ok");
+        return new PlainResult(0, "成功");
     }
 
     public PlainResult success(Object data) {
-        return new PlainResult(0, "ok", data);
+        return new PlainResult(0, "成功", data);
     }
 
     public PlainResult error(Integer code, String msg) {

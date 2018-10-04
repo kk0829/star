@@ -18,4 +18,9 @@ public class AccountServiceImpl implements AccountService {
     public Optional<Account> findById(Long id) {
         return repository.findById(id);
     }
+
+    @Override
+    public Long count() {
+        return repository.count();
+    }
 }

@@ -8,4 +8,5 @@ public interface AccountService {
 
     Optional<Account> findById(Long id);
 
+    public Long count();
 }
