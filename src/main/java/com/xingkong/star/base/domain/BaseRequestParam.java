@@ -1,4 +1,4 @@
-package com.xingkong.star.base.model;
+package com.xingkong.star.base.domain;
 
 import java.io.Serializable;
 

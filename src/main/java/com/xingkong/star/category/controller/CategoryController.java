@@ -3,7 +3,7 @@ package com.xingkong.star.category.controller;
 import com.xingkong.star.api.category.domain.Category;
 import com.xingkong.star.api.category.service.CategoryService;
 import com.xingkong.star.base.controller.BaseController;
-import com.xingkong.star.base.model.PlainResult;
+import com.xingkong.star.base.domain.PlainResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

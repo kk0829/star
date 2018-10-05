@@ -4,7 +4,7 @@ import com.xingkong.star.account.model.AccountRequestParam;
 import com.xingkong.star.api.account.domain.Account;
 import com.xingkong.star.api.account.service.AccountService;
 import com.xingkong.star.base.controller.BaseController;
-import com.xingkong.star.base.model.PlainResult;
+import com.xingkong.star.base.domain.PlainResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,6 +1,6 @@
 package com.xingkong.star.account.model;
 
-import com.xingkong.star.base.model.BaseRequestParam;
+import com.xingkong.star.base.domain.BaseRequestParam;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;

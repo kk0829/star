@@ -3,7 +3,7 @@ package com.xingkong.star.item.controller;
 import com.xingkong.star.api.item.domain.Item;
 import com.xingkong.star.api.item.service.ItemService;
 import com.xingkong.star.base.controller.BaseController;
-import com.xingkong.star.base.model.PlainResult;
+import com.xingkong.star.base.domain.PlainResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

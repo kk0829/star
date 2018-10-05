@@ -1,6 +1,6 @@
 package com.xingkong.star.base.handler;
 
-import com.xingkong.star.base.model.PlainResult;
+import com.xingkong.star.base.domain.PlainResult;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;

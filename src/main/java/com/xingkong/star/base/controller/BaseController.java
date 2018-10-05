@@ -1,6 +1,6 @@
 package com.xingkong.star.base.controller;
 
-import com.xingkong.star.base.model.PlainResult;
+import com.xingkong.star.base.domain.PlainResult;
 
 public class BaseController {
 
