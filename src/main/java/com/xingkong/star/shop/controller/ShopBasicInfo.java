@@ -5,6 +5,7 @@ import com.xingkong.star.api.shop.service.ShopService;
 import com.xingkong.star.base.controller.BaseController;
 import com.xingkong.star.base.domain.PlainResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,12 +22,30 @@ public class ShopBasicInfo extends BaseController {
     private ShopService shopService;
 
     @GetMapping(value = "/shop/info")
-    public PlainResult getShopBasicInfo(@RequestParam(value = "id", required = true) Integer id) {
+    public PlainResult getShopBasicInfo(@RequestParam(value = "id") Integer id) {
         Optional<Shop> shop = shopService.findById(id);
         if (shop.isPresent()) {
             return this.success(shop);
         } else {
             return this.emptyRecord();
         }
+    }
+
+    @GetMapping(value = "/shop/info/by-alias")
+    public PlainResult getShopBasicInfoByAlias(@RequestParam(value = "alias") String alias) {
+        Shop shop = shopService.findByAlias(alias);
+        if (shop != null) {
+            return this.success(shop);
+        } else {
+            return this.emptyRecord();
+        }
+    }
+
+    @GetMapping(value = "/shop/list/search")
+    public PlainResult findAllByNameLike(@RequestParam(value = "name", required = false, defaultValue = "") String name,
+                                         @RequestParam(value = "page", required = false, defaultValue = "0") String page,
+                                         @RequestParam(value = "pageSize", required = false, defaultValue = "20") String pageSize) {
+        Page<Shop> list = shopService.findAllByNameLike(Integer.parseInt(page), Integer.parseInt(pageSize), name);
+        return this.success(list);
     }
 }

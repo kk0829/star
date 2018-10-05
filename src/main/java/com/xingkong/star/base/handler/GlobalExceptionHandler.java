@@ -1,6 +1,8 @@
 package com.xingkong.star.base.handler;
 
 import com.xingkong.star.base.domain.PlainResult;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -13,6 +15,12 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
     public PlainResult defaultErrorHandler(HttpServletRequest req, Exception e) throws Exception {
-        return new PlainResult(9999, e.getMessage());
+        if (e instanceof MissingServletRequestParameterException) {
+            return new PlainResult(1000, "Params Error：" + e.getMessage());
+        } else if (e instanceof InvalidDataAccessApiUsageException) {
+            return new PlainResult(1000, "参数错误：" + e.getMessage());
+        } else {
+            return new PlainResult(-1, e.getMessage());
+        }
     }
 }

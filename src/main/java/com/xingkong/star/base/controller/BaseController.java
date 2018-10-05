@@ -13,7 +13,7 @@ public class BaseController {
     }
 
     public PlainResult emptyRecord() {
-        return new PlainResult(-1, "记录不存在");
+        return new PlainResult(1001, "记录不存在");
     }
 
     public PlainResult error(Integer code, String msg) {
