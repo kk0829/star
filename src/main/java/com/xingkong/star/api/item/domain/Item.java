@@ -18,6 +18,8 @@ public class Item implements Serializable {
     @GeneratedValue
     private Long id;
 
+    private String alias;
+
     private String name;
 
     private BigDecimal price;
@@ -31,4 +33,6 @@ public class Item implements Serializable {
     private Integer status;
 
     private Integer categoryId;
+
+    private Integer shopId;
 }
