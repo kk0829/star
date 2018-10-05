@@ -7,14 +7,19 @@ import com.xingkong.star.base.domain.PlainResult;
 import com.xingkong.star.base.exception.ParamsError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.tags.Param;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 /**
  * 店铺基本信息控制器类
+ * @author kk
  */
 @RestController
 public class ShopBasicInfo extends BaseController {
@@ -52,5 +57,16 @@ public class ShopBasicInfo extends BaseController {
                                          @RequestParam(value = "pageSize", required = false, defaultValue = "20") String pageSize) {
         Page<Shop> list = shopService.findAllByNameLike(Integer.parseInt(page), Integer.parseInt(pageSize), name);
         return this.success(list);
+    }
+
+    @PostMapping(value = "/shop/create")
+    public PlainResult save(@Valid Shop shop, BindingResult bindingResult) throws Exception {
+        System.out.println(bindingResult);
+        if (bindingResult.hasErrors()) {
+            throw new ParamsError(bindingResult.getFieldError().getDefaultMessage());
+        }
+
+        Shop data = shopService.save(shop);
+        return this.success(data);
     }
 }

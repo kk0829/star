@@ -37,6 +37,13 @@ public class ShopServiceImpl implements ShopService {
         return repository.findByAlias(alias);
     }
 
+    @Override
+    public Shop save(Shop shop) {
+        shop.setAlias("123");
+        System.out.println(shop);
+        return repository.save(shop);
+    }
+
     /**
      * 根据店铺名 name 查询店铺列表
      *

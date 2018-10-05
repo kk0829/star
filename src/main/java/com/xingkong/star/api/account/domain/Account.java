@@ -1,16 +1,22 @@
 package com.xingkong.star.api.account.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * @author kk
+ */
 @Entity
 @DynamicUpdate
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Account {
 
     @Id

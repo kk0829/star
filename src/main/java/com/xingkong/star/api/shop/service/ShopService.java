@@ -12,5 +12,7 @@ public interface ShopService {
 
     public Shop findByAlias(String alias);
 
+    public Shop save(Shop shop);
+
     public Page<Shop> findAllByNameLike(Integer page, Integer size, String name);
 }
