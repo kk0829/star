@@ -3,7 +3,6 @@ package com.xingkong.star.base.handler;
 import com.xingkong.star.base.domain.PlainResult;
 import com.xingkong.star.base.exception.ParamsError;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
-import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
