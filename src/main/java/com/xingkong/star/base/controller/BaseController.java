@@ -12,6 +12,10 @@ public class BaseController {
         return new PlainResult(0, "成功", data);
     }
 
+    public PlainResult emptyRecord() {
+        return new PlainResult(-1, "记录不存在");
+    }
+
     public PlainResult error(Integer code, String msg) {
         return new PlainResult(code, msg);
     }
