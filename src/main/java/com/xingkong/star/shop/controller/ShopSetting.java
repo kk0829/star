@@ -7,5 +7,5 @@ import org.springframework.web.bind.annotation.RestController;
  * 店铺设置类
  */
 @RestController
-public class ShopSettings extends BaseController {
+public class ShopSetting extends BaseController {
 }
