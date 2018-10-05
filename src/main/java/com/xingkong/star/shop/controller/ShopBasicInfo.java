@@ -4,6 +4,7 @@ import com.xingkong.star.api.shop.domain.Shop;
 import com.xingkong.star.api.shop.service.ShopService;
 import com.xingkong.star.base.controller.BaseController;
 import com.xingkong.star.base.domain.PlainResult;
+import com.xingkong.star.base.exception.ParamsError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,23 +23,27 @@ public class ShopBasicInfo extends BaseController {
     private ShopService shopService;
 
     @GetMapping(value = "/shop/info")
-    public PlainResult getShopBasicInfo(@RequestParam(value = "id") Integer id) {
-        Optional<Shop> shop = shopService.findById(id);
-        if (shop.isPresent()) {
-            return this.success(shop);
-        } else {
-            return this.emptyRecord();
+    public PlainResult getShopBasicInfo(@RequestParam(value = "id", required = false) Integer id,
+                                        @RequestParam(value = "alias", required = false) String alias) throws Exception {
+        if (id == null && alias == null) {
+            throw new ParamsError("至少传递一个 id 或 alias 参数");
         }
-    }
-
-    @GetMapping(value = "/shop/info/by-alias")
-    public PlainResult getShopBasicInfoByAlias(@RequestParam(value = "alias") String alias) {
-        Shop shop = shopService.findByAlias(alias);
-        if (shop != null) {
-            return this.success(shop);
-        } else {
-            return this.emptyRecord();
+        if (id != null) {
+            Optional<Shop> shop = shopService.findById(id);
+            if (shop.isPresent()) {
+                return this.success(shop);
+            } else {
+                return this.emptyRecord();
+            }
+        } else if (alias != null) {
+            Shop shop = shopService.findByAlias(alias);
+            if (shop != null) {
+                return this.success(shop);
+            } else {
+                return this.emptyRecord();
+            }
         }
+        return this.emptyRecord();
     }
 
     @GetMapping(value = "/shop/list/search")
