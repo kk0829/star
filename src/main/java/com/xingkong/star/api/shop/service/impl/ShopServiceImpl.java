@@ -8,11 +8,15 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import javax.persistence.criteria.*;
 import java.util.Optional;
 
+/**
+ * @author kk
+ */
 @Service
 public class ShopServiceImpl implements ShopService {
 
@@ -53,5 +57,29 @@ public class ShopServiceImpl implements ShopService {
     public Page<Shop> findAllByNameLike(Integer page, Integer size, String name) {
         Pageable pageable = PageRequest.of(page, size, Sort.Direction.ASC, "id");
         return repository.findAllByNameLike("%" + name + "%", pageable);
+    }
+
+    /**
+     * 根据店铺名 name 查询店铺列表
+     *
+     * @param page 第几页
+     * @param size 每页大小
+     * @param name 店铺名
+     */
+    @Override
+    public Page<Shop> search(Integer page, Integer size, String name) {
+        System.out.println("page = " + page);
+        System.out.println("size = " + size);
+        System.out.println("name = " + name);
+        Specification<Shop> specification = new Specification<Shop>() {
+            @Override
+            public Predicate toPredicate(Root<Shop> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                Path path = root.get("name");
+                return criteriaBuilder.like(path, "%" + name + "%");
+            }
+        };
+        Pageable pageable = PageRequest.of(page, size, Sort.Direction.ASC, "id");
+
+        return repository.findAll(specification, pageable);
     }
 }

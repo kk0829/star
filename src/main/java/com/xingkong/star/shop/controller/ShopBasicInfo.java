@@ -55,7 +55,7 @@ public class ShopBasicInfo extends BaseController {
     public PlainResult findAllByNameLike(@RequestParam(value = "name", required = false, defaultValue = "") String name,
                                          @RequestParam(value = "page", required = false, defaultValue = "0") String page,
                                          @RequestParam(value = "pageSize", required = false, defaultValue = "20") String pageSize) {
-        Page<Shop> list = shopService.findAllByNameLike(Integer.parseInt(page), Integer.parseInt(pageSize), name);
+        Page<Shop> list = shopService.search(Integer.parseInt(page), Integer.parseInt(pageSize), name);
         return this.success(list);
     }
 

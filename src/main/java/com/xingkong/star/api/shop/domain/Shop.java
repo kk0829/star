@@ -1,6 +1,5 @@
 package com.xingkong.star.api.shop.domain;
 
-import lombok.Builder;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
@@ -8,10 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
+/**
+ * @author kk
+ */
 @Entity
 @Data
 public class Shop implements Serializable {
