@@ -68,9 +68,6 @@ public class ShopServiceImpl implements ShopService {
      */
     @Override
     public Page<Shop> search(Integer page, Integer size, String name) {
-        System.out.println("page = " + page);
-        System.out.println("size = " + size);
-        System.out.println("name = " + name);
         Specification<Shop> specification = new Specification<Shop>() {
             @Override
             public Predicate toPredicate(Root<Shop> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
